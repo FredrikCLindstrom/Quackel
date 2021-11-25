@@ -1,6 +1,6 @@
 USE Quackeldb;
 
-INSERT INTO user(userName)
+INSERT INTO users(userName)
 VALUES
 ("shaquille.oatmeal"),
 ("hanging_with_my_gnomies"),
@@ -11,7 +11,7 @@ VALUES
 ("HairyPoppins"),
 ("Joe Not Exotic");
 
-INSERT INTO message(userID, body)
+INSERT INTO quacks(userID, body)
 VALUES
 (1001, "Up unpacked friendly ecstatic so possible humoured do. Ample end might folly quiet one set spoke her."),
 (1001, "We no am former valley assure. Four need spot ye said we find mile. Are commanded him convinced dashwoods did estimable forfeited."),
