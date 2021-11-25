@@ -1,8 +1,10 @@
 package com.quackel.quackel;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Target;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,14 +13,17 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "quack")
+public class Quack {
     @Id
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long quackID;
 
-    @Column(name="name")
-    private String name;
+    @Column(name = "body", nullable = false)
+    private String body;
+
+    //@Column(name=userId)
+    private Long userid;
 
 
 }

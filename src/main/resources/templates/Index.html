@@ -15,7 +15,7 @@
 <div class="row" style="padding: 25px">
   <div class="col">
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label" th:text="'hello '+ ${name}"></label>
+      <label for="exampleFormControlTextarea1" class="form-label" th:text="'hello '+ ${nameOne}"></label>
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="post something"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Post</button>
@@ -25,12 +25,12 @@
 <div class="container">
   <div class="row"  style="background-color:antiquewhite; padding: 25px">
     <div style="padding:5px;">
-    <div class="col-sm-12" >@xXRougeGamer420Xx</div>
-    <div class="col-sm-12"  style="background-color:whitesmoke;">its raining, thanx obama...</div>
+    <div class="col-sm-12" th:text="${nameOne}"></div>
+    <div class="col-sm-12"  style="background-color:whitesmoke;" th:text="${bodyOne}"></div>
     </div>
   <div style="padding:5px;">
-    <div class="col-sm-12" >@Thomas</div>
-    <div class="col-sm-12"  style="background-color:whitesmoke;">dricker kaffe </div>
+    <div class="col-sm-12" th:text="${nameTwo}"></div>
+    <div class="col-sm-12"  style="background-color:whitesmoke;" th:text="${bodyTwo}"></div>
   </div>
   </div>
 </div>
