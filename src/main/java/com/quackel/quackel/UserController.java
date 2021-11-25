@@ -35,4 +35,13 @@ public class UserController {
         model.addAttribute("name", name);
         return "greeting.html";
     }
+
+    @GetMapping("/index")
+    public String testting(Model model) {
+        List <User> userlist = userService.getAllUsers();
+        User user1 = userlist.get(0);
+        String name= user1.getName();
+        model.addAttribute("name", name);
+        return "Index.html";
+    }
 }
