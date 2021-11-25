@@ -13,6 +13,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    QuackService quackService;
 
     @GetMapping("/test")
     public String testFunc(){
@@ -39,9 +41,47 @@ public class UserController {
     @GetMapping("/index")
     public String testting(Model model) {
         List <User> userlist = userService.getAllUsers();
-        User user1 = userlist.get(0);
-        String name= user1.getName();
-        model.addAttribute("name", name);
+
+        User userOne = userlist.get(0);
+        String nameOne= userOne.getName();
+
+        User userTwo = userlist.get(1);
+        String nameTwo= userTwo.getName();
+
+        model.addAttribute("nameOne", nameOne);
+        model.addAttribute("nameTwo", nameTwo);
+
+        return "Index.html";
+    }
+
+    @GetMapping("/index2")
+    public String testting2(Model model) {
+
+        List<Quack> quackList = quackService.getAllQuacks();
+        Quack quackOne = quackList.get(7);
+        String bodyOne = quackOne.getBody();
+
+        Quack quackTwo = quackList.get(1);
+        String bodyTwo = quackTwo.getBody();
+
+        model.addAttribute("bodyOne", bodyOne);
+        model.addAttribute("bodyTwo", bodyTwo);
+
+        List <User> userlist = userService.getAllUsers();
+
+        User userOne = userlist.get(0);
+        String nameOne= userOne.getName();
+
+        User userTwo = userlist.get(1);
+        String nameTwo= userTwo.getName();
+
+        model.addAttribute("nameOne", nameOne);
+        model.addAttribute("nameTwo", nameTwo);
+
+        System.out.println(userOne.toString());
+        System.out.println(quackOne.toString());
+
         return "Index.html";
     }
 }
+

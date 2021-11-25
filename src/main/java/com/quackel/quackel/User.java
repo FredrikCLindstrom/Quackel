@@ -2,11 +2,14 @@ package com.quackel.quackel;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "user")
 public class User {
@@ -16,4 +19,5 @@ public class User {
 
     @Column(name="name")
     private String name;
+
 }

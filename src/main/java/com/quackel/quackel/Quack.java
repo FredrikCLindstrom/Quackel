@@ -3,21 +3,31 @@ package com.quackel.quackel;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.Target;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
+@ToString
+
 @Entity
 @Table(name = "quack")
 public class Quack {
     @Id
-    @Column(name = "quackID", nullable = false)
+
+    @Column(name = "id", nullable = false)
+
     private Long quackID;
 
     @Column(name = "body", nullable = false)
     private String body;
 
-    // TODO - Fixa foreign key för userId
+    //@Column(name=userId)
+    private Long userid;
+
+
 
 }
