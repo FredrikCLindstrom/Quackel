@@ -12,11 +12,14 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+
 @Entity
 @Table(name = "quack")
 public class Quack {
     @Id
+
     @Column(name = "id", nullable = false)
+
     private Long quackID;
 
     @Column(name = "body", nullable = false)
@@ -24,6 +27,7 @@ public class Quack {
 
     //@Column(name=userId)
     private Long userid;
+
 
 
 }
