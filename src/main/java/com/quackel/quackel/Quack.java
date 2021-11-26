@@ -1,6 +1,7 @@
 package com.quackel.quackel;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,7 +20,6 @@ public class Quack {
     @Id
 
     @Column(name = "id", nullable = false)
-
     private Long quackID;
 
     @Column(name = "body", nullable = false)
@@ -27,6 +27,12 @@ public class Quack {
 
     //@Column(name=userId)
     private Long userid;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
+    @JsonIgnore
+    private User user;
 
 
 
