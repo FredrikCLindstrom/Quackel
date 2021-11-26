@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Controller//tog bort restController
@@ -82,6 +83,17 @@ public class UserController {
         System.out.println(quackOne.toString());
 
         return "Index.html";
+    }
+
+    @GetMapping("/user/{id}")
+    public String getUserById(@PathVariable("id") int id, Model model) {
+
+        List <User> userList = userService.getAllUsers();
+        User user = userList.get(id);
+
+        model.addAttribute("user", user);
+
+        return "userbyid.html";
     }
 }
 
