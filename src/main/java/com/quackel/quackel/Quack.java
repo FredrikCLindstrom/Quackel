@@ -16,7 +16,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "quack")
-public class Quack {
+public class Quack implements Comparable<Quack>{
     @Id
 
     @Column(name = "id", nullable = false)
@@ -35,5 +35,12 @@ public class Quack {
     private User user;
 
 
-
+    @Override
+    public int compareTo(Quack o) {
+        if(quackID>o.quackID){
+            return -1;
+        }else {
+            return 1;
+        }
+    }
 }
