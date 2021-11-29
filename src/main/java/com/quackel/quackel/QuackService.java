@@ -14,4 +14,8 @@ public class QuackService {
     public List<Quack> getAllQuacks(){
         return quackRepository.findAll();
     }
+
+    public Quack getQuackById(Long id) {
+        return quackRepository.getById(id);
+    }
 }
