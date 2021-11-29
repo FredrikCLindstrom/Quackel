@@ -86,14 +86,24 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public String getUserById(@PathVariable("id") int id, Model model) {
+    public String getUserById(@PathVariable("id") Long id, Model model) {
 
         List <User> userList = userService.getAllUsers();
-        User user = userList.get(id);
+        User user = userService.getUserById(id);
 
         model.addAttribute("user", user);
 
         return "userbyid.html";
+    }
+
+    @GetMapping("/quack/{id}")
+    public String getPostbyId(@PathVariable("id") Long id, Model model) {
+        List <Quack> quackList = quackService.getAllQuacks();
+        Quack quack = quackService.getQuackById(id);
+        model.addAttribute("quack", quack);
+
+        return "quackbyid.html";
+
     }
 }
 
