@@ -7,32 +7,14 @@
 </head>
 <body style="background-color:powderblue;">
 
-<div class="header" style="padding-left: 20px; padding-top: 20px">
+<div class="header" style="padding: 20px;text-align: center">
   <h1>Quackel <img src="https://www.buythelogo.com/wp-content/uploads/2019/03/Bird-2.jpg" alt="logo" height="50" width="50"></h1>
 
 </div>
-<div class="container">
-<div class="row" style="padding: 25px">
-  <div class="col">
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label" th:text="'hello '+ ${nameOne}"></label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="post something"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Post</button>
-  </div>
+<div style="text-align: center">Quackel is like twitter but worse somehow
 </div>
-</div>
-<div class="container">
-  <div class="row"  style="background-color:antiquewhite; padding: 25px">
-    <div style="padding:5px;">
-    <div class="col-sm-12" th:text="${nameOne}"></div>
-    <div class="col-sm-12"  style="background-color:whitesmoke;" th:text="${bodyOne}"></div>
-    </div>
-  <div style="padding:5px;">
-    <div class="col-sm-12" th:text="${nameTwo}"></div>
-    <div class="col-sm-12"  style="background-color:whitesmoke;" th:text="${bodyTwo}"></div>
-  </div>
-  </div>
+<div style="padding: 2%; text-align: center">
+  <a href="/api/start"><button>Awesome, take me there</button></a>
 </div>
 </body>
 </html>
