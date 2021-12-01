@@ -19,11 +19,16 @@ public class UserService {
         return userRepository.getById(id);
     }
 
+
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
+    }
     public void registerNewUser(User user) {
 
         if(user.getName().isEmpty()) {
             throw new IllegalStateException("User name was empty");
         }
         userRepository.save(user);
+
     }
 }

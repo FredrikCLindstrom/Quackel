@@ -71,7 +71,6 @@ public class UserController {
         List <Quack> quackList = quackService.getAllQuacks();
         Quack quack = quackService.getQuackById(id);
         model.addAttribute("quack", quack);
-
         return "quackbyid.html";
     }
 
@@ -105,5 +104,24 @@ public class UserController {
 
         return "searchedUserReturn.html";
     }
+
+    @DeleteMapping("/deleteQuack/{id}")
+    public String deleteQuackById(@PathVariable("id") Long id) {
+        Quack quack = quackService.getQuackById(id);
+        Long userId = quack.getUser().getId();
+
+        quackService.deleteQuackById(id);
+
+        return "redirect:/api/user/" + userId;
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    public String deleteUserById(@PathVariable("id") Long id) {
+
+        userService.deleteUserById(id);
+
+        return "redirect:/api/start";
+    }
+
 }
 

@@ -18,4 +18,8 @@ public class QuackService {
     public Quack getQuackById(Long id) {
         return quackRepository.getById(id);
     }
+
+    public void deleteQuackById(Long id) {
+        quackRepository.deleteById(id);
+    }
 }
