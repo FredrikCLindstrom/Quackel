@@ -11,14 +11,22 @@
     <h1 style="display: inline">Quackel</h1>
     <img src="https://static.thenounproject.com/png/1933906-200.png" alt="logo" style="display: inline" height="75" width="75">
 </div>
-
 <div class="container">
-    <div th:each="quack : ${user.quacks}"  class="row"  style="background-color:antiquewhite; padding: 25px">
-        <div style="padding:5px;">
-            <div class="col-sm-12" th:text="${user.name}"></div>
-            <div class="col-sm-12"  style="background-color:whitesmoke;" th:text="${quack.body}"></div>
-        </div>
-    </div>
+
+    <form action="saveUser" method="post">
+        <table>
+            <tr>
+                <td><label for="user-name">User Name</label></td>
+                <br>
+                <td><input type="text" name="name" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Registrera"/></td>
+            </tr>
+        </table>
+    </form>
+
 </div>
 </body>
 </html>

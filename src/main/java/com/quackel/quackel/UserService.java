@@ -18,4 +18,12 @@ public class UserService {
     public User getUserById(Long id) {
         return userRepository.getById(id);
     }
+
+    public void registerNewUser(User user) {
+
+        if(user.getName().isEmpty()) {
+            throw new IllegalStateException("User name was empty");
+        }
+        userRepository.save(user);
+    }
 }
