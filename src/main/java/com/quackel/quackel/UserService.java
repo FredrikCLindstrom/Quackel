@@ -18,4 +18,8 @@ public class UserService {
     public User getUserById(Long id) {
         return userRepository.getById(id);
     }
+
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
+    }
 }

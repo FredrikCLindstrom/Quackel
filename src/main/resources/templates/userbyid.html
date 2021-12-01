@@ -14,11 +14,16 @@
 <div class="container">
     <div class="row" style="padding: 25px">
         <div class="col">
-            <div class="mb-3">
+            <div class="mb-3 d-flex">
                 <label for="exampleFormControlTextarea1" class="form-label" th:text="'hello '+ ${user.name}"></label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="post something"></textarea>
+                <form action="#" th:action="@{/api/deleteUser/{id}(id=${user.id})}" th:method="delete" >
+                    <button type="submit"  class="btn btn-danger" style="margin-left: 30px">
+                        Delete user
+                    </button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary">Post</button>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="post something"></textarea>
+            <button type="submit" class="btn btn-primary mt-3">Post</button>
         </div>
     </div>
 </div>
@@ -27,6 +32,13 @@
         <div style="padding:5px;">
             <div class="col-sm-12" th:text="${user.name}"></div>
             <div class="col-sm-12"  style="background-color:whitesmoke;" th:text="${quack.body}"></div>
+
+            <form action="#" th:action="@{/api/deleteQuack/{id}(id=${quack.QuackID})}" th:method="delete" >
+                <button type="submit"  class="btn btn-danger ml-2 mt-3">
+                    Delete quack
+                </button>
+            </form>
+            </td>
         </div>
     </div>
 </div>
