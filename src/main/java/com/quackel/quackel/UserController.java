@@ -1,15 +1,17 @@
 package com.quackel.quackel;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.websocket.server.PathParam;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 @Controller//tog bort restController
 @RequestMapping("/api")
@@ -87,6 +89,21 @@ public class UserController {
         modelAndView.setViewName("new_user_info.html");
         modelAndView.addObject("user", user);
         return modelAndView;
+    }
+
+    @RequestMapping("/search/")
+    public String requestUserById(@Param("searchTerm") String searchTerm, Model model) {
+
+        List <User> userList = userService.getAllUsers();
+        List <User> matchedSearchUserList = userList.stream().filter(user1 -> user1.getName().contains(searchTerm)).collect(Collectors.toList());
+        int hits = matchedSearchUserList.size();
+
+        System.out.println("matchedSearchUserList.size() = " + matchedSearchUserList.size());
+        model.addAttribute("matchedSearchUserList", matchedSearchUserList);
+        model.addAttribute("hits", hits);
+        model.addAttribute("searchTerm", searchTerm);
+
+        return "searchedUserReturn.html";
     }
 }
 
