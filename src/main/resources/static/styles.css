@@ -1,3 +1,14 @@
+a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+a:hover {
+    color: inherit
+}
+
 body {
     background-color: powderblue;
     display: flex;
@@ -41,11 +52,12 @@ body {
     justify-content: space-around;
 }
 
-.row {
+.better-row {
     background-color: antiquewhite;
     border-radius: 20px;
     margin-bottom: 8px;
     padding: 25px;
+
 }
 
 .submit-button {
@@ -66,5 +78,12 @@ body {
 .text-box-container {
     display: flex;
     flex-direction: column;
+}
+
+.tool-bar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
