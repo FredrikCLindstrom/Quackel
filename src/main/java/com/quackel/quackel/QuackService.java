@@ -22,4 +22,11 @@ public class QuackService {
     public void deleteQuackById(Long id) {
         quackRepository.deleteById(id);
     }
+
+    public void updateQuackById(Long id, String body) {
+        Quack quack = quackRepository.getById(id);
+        quack.setBody(body);
+
+        quackRepository.save(quack);
+    }
 }

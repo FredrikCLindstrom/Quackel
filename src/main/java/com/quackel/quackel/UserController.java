@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -121,9 +122,9 @@ public class UserController {
     public String deleteUserById(@PathVariable("id") Long id) {
 
         userService.deleteUserById(id);
-
         return "redirect:/api/start";
     }
+
 
     @PutMapping("/changeUser/{id}")
     public String changeUserById(@Param("newName")@PathVariable("id") Long id, String newName) {
@@ -131,6 +132,26 @@ public class UserController {
         userService.changeUserById(id,newName);
 
         return "redirect:/api/user/" + id;
+    }
+
+    @GetMapping("/showUpdateQuack/{id}")
+    public String showUpdateQuack(@PathVariable("id") Long id, Model model) {
+
+        Quack quack = quackService.getQuackById(id);
+        model.addAttribute("quack", quack);
+
+
+        return "updatequackbyid.html";
+    }
+
+    @PutMapping("updateQuack/{id}")
+    public String updateQuack(@PathVariable("id") Long id, String body) {
+
+        Quack quack = quackService.getQuackById(id);
+        quackService.updateQuackById(id, body);
+
+        return "redirect:/api/user/" + quack.getUser().getId();
+
     }
 
 }
