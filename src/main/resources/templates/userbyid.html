@@ -8,10 +8,12 @@
 <body style="background-color:powderblue;">
 
 <div class="header" style="padding-left: 20px; padding-top: 20px">
+    <a style="text-decoration: none; color: black" href="/api/start">
     <h1 style="display: inline">Quackel</h1>
     <img src="https://static.thenounproject.com/png/1933906-200.png" alt="logo" style="display: inline" height="75" width="75">
-
+    </a>
 </div>
+
 <div class="container">
     <div class="row" style="padding: 25px">
         <div class="col">
@@ -22,6 +24,30 @@
                         Delete user
                     </button>
                 </form>
+                <button onclick="myFunction()" class="btn btn-danger" style="margin-left: 30px">change User Name</button>
+
+                <form id="demo" style="display: none; margin-left: 30px" th:action="@{/api/changeUser/{id}(id=${user.id})}" th:method="put" >
+
+                    <input type="text" name="newName" th:value="${newName}" placeholder="type in new username" size="30">
+
+                    <button type="submit"  class="btn btn-danger" style="margin-left: 15px">
+                        go!
+                    </button>
+                </form>
+
+
+
+
+                <script>
+                    function myFunction() {
+                        if(document.getElementById("demo").style.display == "none"){
+                        document.getElementById("demo").style.display = "block";}
+                        else{
+                            document.getElementById("demo").style.display = "none";
+                        }
+                    }
+                </script>
+
             </div>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="post something"></textarea>
             <button type="submit" class="btn btn-primary mt-3">Post</button>

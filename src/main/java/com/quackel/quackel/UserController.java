@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class UserController {
 
+    private String textField;
+
     @Autowired
     UserService userService;
     @Autowired
@@ -123,6 +125,15 @@ public class UserController {
         return "redirect:/api/start";
     }
 
+
+    @PutMapping("/changeUser/{id}")
+    public String changeUserById(@Param("newName")@PathVariable("id") Long id, String newName) {
+        System.out.println("is inside changeUserById ");
+        userService.changeUserById(id,newName);
+
+        return "redirect:/api/user/" + id;
+    }
+
     @GetMapping("/showUpdateQuack/{id}")
     public String showUpdateQuack(@PathVariable("id") Long id, Model model) {
 
@@ -140,6 +151,7 @@ public class UserController {
         quackService.updateQuackById(id, body);
 
         return "redirect:/api/user/" + quack.getUser().getId();
+
     }
 
 }
