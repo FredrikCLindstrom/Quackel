@@ -2,6 +2,8 @@ package com.quackel.quackel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +17,7 @@ import java.util.stream.Collectors;
 
 
 @Controller//tog bort restController
-@RequestMapping("/api")
+@RequestMapping(value = "/api")
 public class UserController {
 
     private String textField;
@@ -35,7 +37,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping(value = "/user/{id}")
     public String getUserById(@PathVariable("id") Long id, Model model) {
         List <User> userList = userService.getAllUsers();
         User user = userService.getUserById(id);
@@ -49,7 +51,8 @@ public class UserController {
         return "register.html";
     }
 
-    @RequestMapping(value ="/saveUser", method =RequestMethod.POST)
+    @RequestMapping(value ="/saveUser", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public ModelAndView save(@ModelAttribute User user) {
         user.setName(user.getName());
         userService.registerNewUser(user);

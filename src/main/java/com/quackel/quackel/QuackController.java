@@ -1,6 +1,7 @@
 package com.quackel.quackel;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping(value = "/api", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 public class QuackController {
 
     @Autowired
