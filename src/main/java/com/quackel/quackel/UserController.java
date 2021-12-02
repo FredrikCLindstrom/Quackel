@@ -89,26 +89,5 @@ public class UserController {
 
         return "redirect:/api/user/" + id;
     }
-
-    @GetMapping("/showUpdateQuack/{id}")
-    public String showUpdateQuack(@PathVariable("id") Long id, Model model) {
-
-        Quack quack = quackService.getQuackById(id);
-        model.addAttribute("quack", quack);
-
-
-        return "updatequackbyid.html";
-    }
-
-    @PutMapping("updateQuack/{id}")
-    public String updateQuack(@PathVariable("id") Long id, String body) {
-
-        Quack quack = quackService.getQuackById(id);
-        quackService.updateQuackById(id, body);
-
-        return "redirect:/api/user/" + quack.getUser().getId();
-
-    }
-
 }
 

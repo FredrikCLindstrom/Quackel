@@ -3,10 +3,7 @@ package com.quackel.quackel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -43,5 +40,25 @@ public class QuackController {
         quackService.deleteQuackById(id);
 
         return "redirect:/api/user/" + userId;
+    }
+
+    @GetMapping("/showUpdateQuack/{id}")
+    public String showUpdateQuack(@PathVariable("id") Long id, Model model) {
+
+        Quack quack = quackService.getQuackById(id);
+        model.addAttribute("quack", quack);
+
+
+        return "updatequackbyid.html";
+    }
+
+    @PutMapping("updateQuack/{id}")
+    public String updateQuack(@PathVariable("id") Long id, String body) {
+
+        Quack quack = quackService.getQuackById(id);
+        quackService.updateQuackById(id, body);
+
+        return "redirect:/api/user/" + quack.getUser().getId();
+
     }
 }
