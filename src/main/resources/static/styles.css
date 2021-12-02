@@ -87,6 +87,10 @@ body {
     width: 80%
 }
 
+.submit-button.user-by-id {
+    margin-top: 10px;
+}
+
 .text-box {
     border: none;
     border-radius: 5px;
