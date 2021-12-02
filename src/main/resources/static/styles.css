@@ -5,6 +5,11 @@ a {
     align-items: center;
 }
 
+a.new-user {
+    justify-content: center;
+    width: 100%;
+}
+
 a:hover {
     color: inherit
 }
@@ -17,7 +22,11 @@ body {
 }
 
 .bird {
-    margin-left: 5px
+    display: inline;
+    height: 75px;
+    margin-left: 5px;
+    width: 75px;
+
 }
 
 .container {
@@ -39,6 +48,12 @@ body {
 .page-content {
     align-self: center;
     width: 33%;
+}
+
+.page-content.new-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .page-title{
@@ -66,6 +81,10 @@ body {
     border-radius: 5px;
     color: white;
     padding: 10px;
+}
+
+.submit-button.new-user {
+    width: 80%
 }
 
 .text-box {
