@@ -22,13 +22,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    @Autowired
-    QuackService quackService;
 
-    @GetMapping("/test")
-    public String testFunc(){
-        return "hello";
-    }
     @GetMapping("/getall")
     public List<User> getAll(){
         return userService.getAllUsers();
@@ -41,40 +35,13 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting.html";
-    }
-
-
-    @GetMapping("/start")
-    public String testting2(Model model) {
-
-        List<Quack> quackList = quackService.getAllQuacks();
-        Collections.sort(quackList);//sorterar nyast längst up comparable i quack.java
-        model.addAttribute("quackList", quackList);
-
-        return "start.html";
-    }
-
     @GetMapping("/user/{id}")
     public String getUserById(@PathVariable("id") Long id, Model model) {
-
         List <User> userList = userService.getAllUsers();
         User user = userService.getUserById(id);
-
         model.addAttribute("user", user);
 
         return "userbyid.html";
-    }
-
-    @GetMapping("/quack/{id}")
-    public String getPostbyId(@PathVariable("id") Long id, Model model) {
-        List <Quack> quackList = quackService.getAllQuacks();
-        Quack quack = quackService.getQuackById(id);
-        model.addAttribute("quack", quack);
-        return "quackbyid.html";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -90,12 +57,12 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("new_user_info.html");
         modelAndView.addObject("user", user);
+
         return modelAndView;
     }
 
     @RequestMapping("/search/")
     public String requestUserById(@Param("searchTerm") String searchTerm, Model model) {
-
         List <User> userList = userService.getAllUsers();
         List <User> matchedSearchUserList = userList.stream().filter(user1 -> user1.getName().contains(searchTerm)).collect(Collectors.toList());
         int hits = matchedSearchUserList.size();
@@ -108,19 +75,8 @@ public class UserController {
         return "searchedUserReturn.html";
     }
 
-    @DeleteMapping("/deleteQuack/{id}")
-    public String deleteQuackById(@PathVariable("id") Long id) {
-        Quack quack = quackService.getQuackById(id);
-        Long userId = quack.getUser().getId();
-
-        quackService.deleteQuackById(id);
-
-        return "redirect:/api/user/" + userId;
-    }
-
     @DeleteMapping("/deleteUser/{id}")
     public String deleteUserById(@PathVariable("id") Long id) {
-
         userService.deleteUserById(id);
         return "redirect:/api/start";
     }
