@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/api", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+@RequestMapping(value = "/api")
 public class QuackController {
 
     @Autowired
