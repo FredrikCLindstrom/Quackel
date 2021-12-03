@@ -39,7 +39,10 @@ public class UserController {
     @GetMapping(value = "/user/{id}")
     public String getUserById(@PathVariable("id") Long id, Model model) {
         List <User> userList = userService.getAllUsers();
+
         User user = userService.getUserById(id);
+        List<Quack> quackList= user.getQuacks();
+        Collections.sort(quackList);
         model.addAttribute("user", user);
 
         return "userbyid.html";
