@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
-public class DummyFil {
+@RequestMapping(value = "/rest", produces = MediaType.APPLICATION_JSON_VALUE)
+public class UserRestController {
 
     @Autowired
     UserService userService;
 
-    @GetMapping(path="/all1")
+    @GetMapping(path="/allJson")
     public @ResponseBody
     Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping(path="/all2", produces = MediaType.APPLICATION_XML_VALUE)
+    @GetMapping(path="/allXml", produces = MediaType.APPLICATION_XML_VALUE)
     public @ResponseBody
     Iterable<User> getAllUsers2() {
         return userService.getAllUsers();
