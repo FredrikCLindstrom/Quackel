@@ -2,8 +2,6 @@ package com.quackel.quackel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -53,7 +51,7 @@ public class UserController {
     }
 
     @RequestMapping(value ="/saveUser", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
+
     public ModelAndView save(@ModelAttribute User user) {
         user.setName(user.getName());
         userService.registerNewUser(user);
@@ -71,7 +69,6 @@ public class UserController {
         List <User> matchedSearchUserList = userList.stream().filter(user1 -> user1.getName().contains(searchTerm)).collect(Collectors.toList());
         int hits = matchedSearchUserList.size();
 
-        System.out.println("matchedSearchUserList.size() = " + matchedSearchUserList.size());
         model.addAttribute("matchedSearchUserList", matchedSearchUserList);
         model.addAttribute("hits", hits);
         model.addAttribute("searchTerm", searchTerm);
@@ -85,13 +82,13 @@ public class UserController {
         return "redirect:/api/start";
     }
 
-
-    @PutMapping("/changeUser/{id}")
+     @PutMapping("/changeUser/{id}")
     public String changeUserById(@Param("newName")@PathVariable("id") Long id, String newName) {
         System.out.println("is inside changeUserById ");
         userService.changeUserById(id,newName);
 
         return "redirect:/api/user/" + id;
     }
+
 }
 

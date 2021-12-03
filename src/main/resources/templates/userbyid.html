@@ -55,10 +55,10 @@
 </div>
 
 <div class="container">
-    <div th:each="quack : ${user.quacks}"  class="better-row"  style="background-color:antiquewhite; padding: 25px">
+    <div th:each="quack : ${user.quacks}"  class="row"  style="background-color:antiquewhite; padding: 25px">
         <div style="padding:5px;">
             <div class="col-sm-12" th:text="${user.name}"></div>
-            <div class="col-sm-12" th:text="${quack.body}"></div>
+            <div class="col-sm-12"  style="background-color:whitesmoke;" th:text="${quack.body}"></div>
             <div class="d-flex" style="gap: 10px">
                 <form action="#" th:action="@{/api/deleteQuack/{id}(id=${quack.QuackID})}" th:method="delete" >
                     <button type="submit"  class="btn btn-danger ml-2 mt-3">
