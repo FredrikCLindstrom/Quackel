@@ -1,8 +1,9 @@
 package com.quackel.quackel;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,20 +17,6 @@ public class UserRestController {
 
     @Autowired
     UserService userService;
-
-    // TODO - CREATE, DELETE
-
-    @GetMapping(path="/all/json")
-    public @ResponseBody
-    Iterable<User> getAllUsersJson() {
-        return userService.getAllUsers();
-    }
-
-    @GetMapping(path="/all/xml", produces = MediaType.APPLICATION_XML_VALUE)
-    public @ResponseBody
-    Iterable<User> getAllUsersXml() {
-        return userService.getAllUsers();
-    }
 
     @GetMapping(path="user/{id}")
     public ResponseEntity<User> getUserBydId(@PathVariable Long id) {
@@ -76,8 +63,14 @@ public class UserRestController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable Long id) {
-        userService.deleteUserById(id);
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        try {
+            User existUser = userService.findUserById(id);
+            userService.deleteUser(existUser);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch(NoSuchElementException error) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }

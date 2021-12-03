@@ -33,6 +33,10 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public void deleteUser(User user) {
+        userRepository.delete(user);
+    }
+
     public void registerNewUser(User user) {
 
         if(user.getName().isEmpty()) {
