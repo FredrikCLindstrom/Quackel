@@ -12,11 +12,11 @@
         <div class="header">
             <a href="/api/start">
                 <h1>Quackel</h1>
-                <img class="bird" src="https://static.thenounproject.com/png/1933906-200.png" alt="logo" style="display: inline" height="75" width="75">
+                <img class="bird" src="https://static.thenounproject.com/png/1933906-200.png" alt="logo">
             </a>
         </div>
     <div class="tool-bar">
-        <a href="/api/register"><button class="submit-button">Register</button></a>
+        <a href="/api/register"><button class="btn btn-success">Register</button></a>
         <form th:action="@{search/}" >
             <input class="text-box" type="text" name="searchTerm" th:value="${searchTerm}" placeholder="Search user..." size="30">
             <button class="submit-button" type="submit">Search</button>
