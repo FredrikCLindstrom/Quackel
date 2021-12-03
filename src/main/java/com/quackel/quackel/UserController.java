@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 
 @Controller//tog bort restController
+@CrossOrigin(origins = "http://localhost:8090")
 @RequestMapping("/api")
 public class UserController {
 

@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:8090")
 @RequestMapping("/api")
 public class QuackController {
 
