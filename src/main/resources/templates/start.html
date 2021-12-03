@@ -22,16 +22,9 @@
             <button class="submit-button" type="submit">Search</button>
         </form>
     </div>
-        <div class="better-row">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">What's on your mind?</label>
-                    <textarea class="text-box form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Quack something"></textarea>
-                </div>
-                <button type="submit" class="submit-button">QUACK</button>
 
-            </div>
-        </div>
+
+
     </div>
     <div class="container">
         <div th:each="quack : ${quackList}"  class="better-row">

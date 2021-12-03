@@ -48,8 +48,18 @@
                 </script>
 
             </div>
-            <textarea class="text-box form-control" id="exampleFormControlTextarea1" rows="2" placeholder="post something"></textarea>
-            <button type="submit" class="submit-button user-by-id">QUACK</button>
+            <form th:action="@{/api/postQuack/{id}(id=${user.id})}" th:method="post">
+                <div class="better-row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">What's on your mind?</label>
+                            <textarea class="text-box form-control" name="body" th:value="${body}" id="exampleFormControlTextarea1" rows="2" placeholder="Quack something"></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">QUACK</button>
+
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
