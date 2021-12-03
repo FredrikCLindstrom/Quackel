@@ -17,6 +17,9 @@ public class QuackController {
     @Autowired
     QuackService quackService;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping("/start")
     public String testting2(Model model) {
         List<Quack> quackList = quackService.getAllQuacks();
@@ -62,5 +65,23 @@ public class QuackController {
 
         return "redirect:/api/user/" + quack.getUser().getId();
 
+    }
+
+    @PostMapping("/postQuack/{id}")
+    public String postQuack(@PathVariable("id") Long id,String body){
+        Quack quack = new Quack();
+        quack.setBody(body);
+        quack.setUserid(id);
+
+        //User user = userService.getUserById(1002L);
+        User user = new User();
+        //user.setName("maaaaa");
+        user.setId(id);
+
+        //System.out.println(user.getId());
+        quack.setUser(user);
+        quackService.saveQuack(quack);
+        System.out.println(quack.toString());
+        return "redirect:/api/user/" + quack.getUser().getId();
     }
 }

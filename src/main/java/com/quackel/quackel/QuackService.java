@@ -29,4 +29,8 @@ public class QuackService {
 
         quackRepository.save(quack);
     }
+
+    public void saveQuack(Quack quack){
+        quackRepository.save(quack);
+    }
 }

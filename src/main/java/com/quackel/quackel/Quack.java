@@ -8,6 +8,7 @@ import lombok.ToString;
 import org.hibernate.annotations.Target;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
@@ -16,22 +17,21 @@ import java.util.List;
 
 @Entity
 @Table(name = "quack")
-public class Quack implements Comparable<Quack>{
+public class Quack implements Comparable<Quack>, Serializable {
     @Id
-
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = true)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long quackID;
 
     @Column(name = "body", nullable = false)
     private String body;
 
-    //@Column(name=userId)
+    @Column(name="userId", insertable = false, updatable = false)
     private Long userid;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", nullable = false)
-    @JsonIgnore
     private User user;
 
 
