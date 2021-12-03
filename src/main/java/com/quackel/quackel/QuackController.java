@@ -10,7 +10,8 @@ import java.util.Collections;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/api")
+@CrossOrigin(origins = "http://localhost:8090")
+@RequestMapping("/api")
 public class QuackController {
 
     @Autowired

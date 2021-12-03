@@ -17,7 +17,8 @@ import java.util.stream.Collectors;
 
 
 @Controller//tog bort restController
-@RequestMapping(value = "/api")
+@CrossOrigin(origins = "http://localhost:8090")
+@RequestMapping("/api")
 public class UserController {
 
     private String textField;
