@@ -51,6 +51,18 @@ public class UserRestController {
         }
     }
 
+    @PostMapping(path = "/register")
+    public ResponseEntity<?> register(@Param("name") String name) {
+        try {
+            User newUser = new User();
+            newUser.setName(name);
+            userService.userRepository.save(newUser);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch(NoSuchElementException error) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(path = "/update/{id}")
     public ResponseEntity<?> update(@Param("newName") @PathVariable("id") Long id, String newName) {
         try {
@@ -61,6 +73,11 @@ public class UserRestController {
         } catch(NoSuchElementException error) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
     }
+
+    @DeleteMapping(path = "/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        userService.deleteUserById(id);
+    }
+
 }
