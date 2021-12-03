@@ -18,7 +18,7 @@ public class UserRestController {
     @Autowired
     UserService userService;
 
-    @GetMapping(path="user/{id}")
+    @GetMapping(path="user/json/{id}")
     public ResponseEntity<User> getUserBydId(@PathVariable Long id) {
         try {
             User user = userService.findUserById(id);
@@ -44,7 +44,8 @@ public class UserRestController {
             User newUser = new User();
             newUser.setName(name);
             userService.userRepository.save(newUser);
-            return new ResponseEntity<>(HttpStatus.OK);
+            String responseMessage = "New user " + newUser.getId() + " \"" + newUser.getName() + "\" created";
+            return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
         } catch(NoSuchElementException error) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -56,7 +57,8 @@ public class UserRestController {
             User existUser = userService.findUserById(id);
             existUser.setName(newName);
             userService.userRepository.save(existUser);
-            return new ResponseEntity<>(HttpStatus.OK);
+            String responseMessage = "Updated user name for " + existUser.getId() + " to " + existUser.getName();
+            return new ResponseEntity<>(responseMessage, HttpStatus.OK);
         } catch(NoSuchElementException error) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -67,7 +69,8 @@ public class UserRestController {
         try {
             User existUser = userService.findUserById(id);
             userService.deleteUser(existUser);
-            return new ResponseEntity<>(HttpStatus.OK);
+            String responseMessage = existUser.getId() + " " + existUser.getName() + " has been deleted";
+            return new ResponseEntity<>(responseMessage, HttpStatus.OK);
         } catch(NoSuchElementException error) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
