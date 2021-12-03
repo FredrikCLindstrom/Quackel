@@ -23,6 +23,10 @@ public class UserService {
         return userRepository.getById(id);
     }
 
+    public User findUserById(Long id) {
+        return userRepository.findById(id).get();
+    }
+
 
     public void deleteUserById(Long id) {
 

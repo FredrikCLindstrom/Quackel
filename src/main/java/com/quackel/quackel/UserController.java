@@ -84,7 +84,6 @@ public class UserController {
 
      @PutMapping("/changeUser/{id}")
     public String changeUserById(@Param("newName")@PathVariable("id") Long id, String newName) {
-        System.out.println("is inside changeUserById ");
         userService.changeUserById(id,newName);
 
         return "redirect:/api/user/" + id;
