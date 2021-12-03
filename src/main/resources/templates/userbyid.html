@@ -18,7 +18,7 @@
     </div>
     <div class="better-row" style="padding: 25px">
         <div class="col">
-            <div class="mb-3 d-flex">
+            <div style="align-items: center" class="mb-3 d-flex">
                 <label for="exampleFormControlTextarea1" class="form-label" th:text="${user.name}"></label>
                 <form action="#" th:action="@{/api/deleteUser/{id}(id=${user.id})}" th:method="delete" >
                     <button type="submit"  class="btn btn-danger" style="margin-left: 30px">

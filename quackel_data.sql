@@ -27,4 +27,5 @@ VALUES
 (1007, "fuck drugs have u ever moo'ed at a cow and have it moo back to u"),
 (1007, "'Do you ever think maybe God stays in heaven beacuse he's afraid of what he's created?' is such a raw fucking line why is it from SPY KIDS 2"),
 (1008, "'You smell like outside' is a very distinct and accurate smell"),
-(1008, "practicing at not getting mad when someone prasies the marvel cinematic universe");
+(1008, "practicing at not getting mad when someone prasies the marvel cinematic universe"),
+(1004, "Quackel isn't that bad, at least it has a better UX than Totara");
