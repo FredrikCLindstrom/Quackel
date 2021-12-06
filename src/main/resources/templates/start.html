@@ -24,12 +24,13 @@
     </div>
         <div class="better-row">
             <div class="col">
+                <form th:action="@{user/{id}(id=${user.id})addQuack}" th:object="${quack}" th:method="POST">
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">What's on your mind?</label>
-                    <textarea class="text-box form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Quack something"></textarea>
+                    <label for="body" class="form-label">What's on your mind?</label>
+                    <textarea class="text-box form-control" id="body" type="text" rows="2" placeholder="Quack something"></textarea>
                 </div>
                 <button type="submit" class="submit-button">QUACK</button>
-
+                </form>
             </div>
         </div>
     </div>

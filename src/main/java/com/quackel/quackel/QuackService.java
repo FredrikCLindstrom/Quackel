@@ -10,6 +10,8 @@ public class QuackService {
 
     @Autowired
     QuackRepository quackRepository;
+    @Autowired
+    UserRepository userRepository;
 
     public List<Quack> getAllQuacks(){
         return quackRepository.findAll();
@@ -29,4 +31,8 @@ public class QuackService {
 
         quackRepository.save(quack);
     }
+    public void addQuack(Quack quack){
+        quackRepository.save(quack);
+    }
+
 }

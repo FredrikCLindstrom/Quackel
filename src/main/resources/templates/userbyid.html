@@ -36,7 +36,6 @@
                     </button>
                 </form>
 
-
                 <script>
                     function myFunction() {
                         if(document.getElementById("demo").style.display == "none"){
@@ -46,13 +45,17 @@
                         }
                     }
                 </script>
-
             </div>
-            <textarea class="text-box form-control" id="exampleFormControlTextarea1" rows="2" placeholder="post something"></textarea>
-            <button type="submit" class="submit-button user-by-id">QUACK</button>
+
+                <input class="text-box form-control" id="exampleFormControlTextarea1" rows="2" placeholder="post something">
+
+                <button type="submit" class="submit-button user-by-id">QUACK</button>
+
         </div>
+
     </div>
 </div>
+
 
 <div class="container">
     <div th:each="quack : ${user.quacks}"  class="row"  style="background-color:antiquewhite; padding: 25px">

@@ -2,9 +2,9 @@ package com.quackel.quackel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,9 +20,11 @@ import java.util.stream.Collectors;
 public class UserController {
 
     private String textField;
-
+    @Autowired
+    QuackService quackService;
     @Autowired
     UserService userService;
+
 
     @GetMapping("/getall")
     public List<User> getAll(){
@@ -88,6 +90,27 @@ public class UserController {
         userService.changeUserById(id,newName);
 
         return "redirect:/api/user/" + id;
+    }
+    @RequestMapping(value = "/formQuack", method = RequestMethod.GET)
+    public String postNewQuack() {
+        return "post.html";
+    }
+
+    @PostMapping("/user/{id}/addQuack")
+    public ModelAndView createQuack(@PathVariable Long id,
+            @ModelAttribute Quack quack){
+        quack.setBody(quack.getBody());
+        quack.setQuackID(quack.getQuackID());
+        quack.setUser(quack.getUser());
+        quack.setUserid(quack.getUserid());
+        quackService.addQuack(quack);
+
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("post_new_quack.html");
+        modelAndView.addObject("quack", quack);
+        return modelAndView;
+
     }
 
 }
