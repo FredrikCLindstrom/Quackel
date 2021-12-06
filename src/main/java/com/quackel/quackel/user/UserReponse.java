@@ -1,4 +1,4 @@
-package com.quackel.quackel;
+package com.quackel.quackel.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

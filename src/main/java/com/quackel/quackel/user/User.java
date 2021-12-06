@@ -1,5 +1,6 @@
-package com.quackel.quackel;
+package com.quackel.quackel.user;
 
+import com.quackel.quackel.quack.Quack;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

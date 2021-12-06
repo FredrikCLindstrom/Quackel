@@ -1,15 +1,13 @@
-package com.quackel.quackel;
+package com.quackel.quackel.quack;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.quackel.quackel.user.User;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.Target;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Getter
 @Setter

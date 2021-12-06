@@ -1,20 +1,18 @@
-package com.quackel.quackel;
+package com.quackel.quackel.user;
 
+import com.quackel.quackel.quack.Quack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.websocket.server.PathParam;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 
-@Controller//tog bort restController
+@Controller
 @CrossOrigin(origins = "http://localhost:8090")
 @RequestMapping("/api")
 public class UserController {
