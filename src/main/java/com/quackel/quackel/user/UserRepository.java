@@ -1,4 +1,4 @@
-package com.quackel.quackel;
+package com.quackel.quackel.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

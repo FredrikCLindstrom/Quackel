@@ -1,7 +1,8 @@
-package com.quackel.quackel;
+package com.quackel.quackel.quack;
 
+import com.quackel.quackel.user.User;
+import com.quackel.quackel.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class QuackController {
     UserService userService;
 
     @GetMapping("/start")
-    public String testting2(Model model) {
+    public String getAllUsers(Model model) {
         List<Quack> quackList = quackService.getAllQuacks();
         Collections.sort(quackList);//sorterar nyast längst up comparable i quack.java
         model.addAttribute("quackList", quackList);
